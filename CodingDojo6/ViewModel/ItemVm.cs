@@ -11,7 +11,7 @@ namespace CodingDojo6.ViewModel
 {
     public class ItemVm : ViewModelBase
     {
-        public ObservableCollection<ItemVm> Items;
+        public ObservableCollection<ItemVm> Items { get; set; }
 
         public string Description { get; set; }
         public string AgeRec { get; set; }

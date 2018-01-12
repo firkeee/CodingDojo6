@@ -7,7 +7,7 @@
         xmlns:viewmodels="clr-namespace:CodingDojo6.ViewModel"
         xmlns:local="clr-namespace:CodingDojo6"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" 
+        Title="MainWindow" Height="500" Width="800" 
         DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}">
     <Grid>
         <Grid.RowDefinitions>
@@ -16,15 +16,15 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="120"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Vertical" Margin="5" Grid.Row="1">
-            <Button Height="30" Width="60" Margin="5" Content="Overview" Command="{Binding SwitchToOverviewBtnClicked}" />
-            <Button Height="30" Width="60" Margin="5" Content="MyToys" Command="{Binding SwitchToMyToysBtnClicked}"/>
+            <Button Height="30" Width="80" Margin="5" Content="Overview" Command="{Binding SwitchToOverviewBtnClicked}" />
+            <Button Height="30" Width="80" Margin="5" Content="MyToys" Command="{Binding SwitchToMyToysBtnClicked}"/>
         </StackPanel>
-        <Border Grid.Column="1" Grid.Row="1" CornerRadius="50,0,0,0" BorderBrush="Black" BorderThickness="1,1,0,1" Background="LightGray">
+        <Border Grid.Column="1" Grid.Row="1" CornerRadius="20,0,0,0" BorderBrush="Black" BorderThickness="1,1,0,1" Background="LightGray">
             <ContentControl Content="{Binding CurrentViewModel}" >
                 <ContentControl.Resources>
                     <DataTemplate DataType="{x:Type viewmodels:OverviewVm}">

@@ -14,6 +14,7 @@
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Practices.ServiceLocation;
 
 namespace CodingDojo6.ViewModel
@@ -41,6 +42,7 @@ namespace CodingDojo6.ViewModel
             ////    // Create run time view services and models
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
+            SimpleIoc.Default.Register<Messenger>();
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<OverviewVm>(true);
