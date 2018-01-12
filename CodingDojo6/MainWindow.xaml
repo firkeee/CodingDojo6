@@ -3,13 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:CodingDojo6.Views"
+        xmlns:viewmodels="clr-namespace:CodingDojo6.ViewModel"
         xmlns:local="clr-namespace:CodingDojo6"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" 
+        DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="231*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -18,9 +21,20 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Vertical" Margin="5" Grid.Row="1">
-            <Button Height="30" Width="60" Margin="5" Content="Overview"/>
-            <Button Height="30" Width="60" Margin="5" Content="MyToys"/>
+            <Button Height="30" Width="60" Margin="5" Content="Overview" Command="{Binding SwitchToOverviewBtnClicked}" />
+            <Button Height="30" Width="60" Margin="5" Content="MyToys" Command="{Binding SwitchToMyToysBtnClicked}"/>
         </StackPanel>
-
+        <Border Grid.Column="1" Grid.Row="1" CornerRadius="50,0,0,0" BorderBrush="Black" BorderThickness="1,1,0,1" Background="LightGray">
+            <ContentControl Content="{Binding CurrentViewModel}" >
+                <ContentControl.Resources>
+                    <DataTemplate DataType="{x:Type viewmodels:OverviewVm}">
+                        <views:Overview/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:MyToysVm}">
+                        <views:MyToysView/>
+                    </DataTemplate>
+                </ContentControl.Resources>
+            </ContentControl>
+        </Border>
     </Grid>
 </Window>

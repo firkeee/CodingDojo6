@@ -16,7 +16,7 @@ namespace CodingDojo6.ViewModel
         public string Description { get; set; }
         public string AgeRec { get; set; }
         public BitmapImage Image { get; set; }
-        public ItemVm(string description, string ageRec, BitmapImage image)
+        public ItemVm(string description, BitmapImage image, string ageRec)
         {
             Description = description;
             AgeRec = ageRec;

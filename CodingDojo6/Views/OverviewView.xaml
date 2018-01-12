@@ -5,8 +5,75 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CodingDojo6.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="250" d:DesignWidth="440">
+    <UserControl.Resources>
+        <DataTemplate x:Key="DefaultLayout">
+            <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="200">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{Binding MainItems.Image}" Height="60" Margin="3"/>
+                    <Label Content="{Binding MainItems.Description}" VerticalAlignment="Center" Margin="5,0"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="SelectedLayout">
+            <!-- alternative to using datatemplate directly-->
+            <StackPanel>
+                <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="200">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Image}" Height="60" Margin="3"/>
+                            <Label Content="{Binding Description}" VerticalAlignment="Center" Margin="5,0"/>
+                        </StackPanel>
+                        <Button Content="Buy" Command="{Binding BuyBtnClickedCmd, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Height="35" Width="190" HorizontalAlignment="Center" Margin="3"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </DataTemplate>
+
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Mode="OneWay" Path="Overview" Source="{StaticResource Locator}"/>
+    </UserControl.DataContext>
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox Grid.Column="0" Grid.Row="0" Margin="5" ItemsSource="{Binding MainItems}" ItemTemplate="{StaticResource DefaultLayout}" SelectedItem="{Binding SelectedItem}"/>
+
+        <ItemsControl Grid.Column="1" ItemsSource="{Binding SelectedItem.Items}" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="230" Margin="5">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding Image}" Height="60" Margin="3"/>
+                                    <Label Content="{Binding Description}" VerticalAlignment="Center" Margin="5,0"/>
+                                    <Label Content="{Binding AgeRec}" FontSize="20" VerticalAlignment="Center" ></Label>
+                                </StackPanel>
+                                <Button Content="Buy" 
+                                        Command="{Binding Overview.BuyBtnClicked, Source={StaticResource Locator}}"
+                                        CommandParameter="{Binding}"
+                                        Height="35" Width="190" HorizontalAlignment="Center" Margin="3"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+
     </Grid>
+    
 </UserControl>

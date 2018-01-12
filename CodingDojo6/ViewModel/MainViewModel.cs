@@ -8,9 +8,8 @@ namespace CodingDojo6.ViewModel
     
     public class MainViewModel : ViewModelBase
     {
-        public RelayCommand SwitchToOverviewBtnClicked;
-        public RelayCommand SwitchToMyToysBtnClicked;
-        public ObservableCollection<ItemVm> MainItems;
+        public RelayCommand SwitchToOverviewBtnClicked { get; set; }
+        public RelayCommand SwitchToMyToysBtnClicked { get; set; }
         private ViewModelBase currentViewModel;
 
         public ViewModelBase CurrentViewModel
@@ -25,7 +24,7 @@ namespace CodingDojo6.ViewModel
 
         public MainViewModel()
         {
-            MainItems = new ObservableCollection<ItemVm>();
+            
             SwitchToMyToysBtnClicked = new RelayCommand(()=>
             {
                 CurrentViewModel = SimpleIoc.Default.GetInstance<MyToysVm>();
