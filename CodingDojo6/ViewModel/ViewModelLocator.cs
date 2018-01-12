@@ -43,6 +43,8 @@ namespace CodingDojo6.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<OverviewVm>(true);
+            SimpleIoc.Default.Register<MyToysVm>(true);
         }
 
         public MainViewModel Main
@@ -52,7 +54,23 @@ namespace CodingDojo6.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
+
+        public OverviewVm  Overview
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<OverviewVm>();
+            }
+        }
+
+        public MyToysVm MyToys
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MyToysVm>();
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels
