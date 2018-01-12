@@ -137,6 +137,11 @@
     <Resource Include="Images\playmobil2.jpg" />
     <Resource Include="Images\playmobil3.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\State_Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\State_Ok.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

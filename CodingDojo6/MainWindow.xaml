@@ -36,5 +36,10 @@
                 </ContentControl.Resources>
             </ContentControl>
         </Border>
+        <StackPanel Grid.Column="1" Grid.Row="2"  Orientation="Horizontal" HorizontalAlignment="Left" Height="40" Width="300">
+            <Image Height="40" Source="{Binding MessageImage}"/>
+            <Label Grid.Column="1" Grid.Row="2" Height="40" Width="200" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Content="{Binding Message}"/>
+        </StackPanel>
+        
     </Grid>
 </Window>
